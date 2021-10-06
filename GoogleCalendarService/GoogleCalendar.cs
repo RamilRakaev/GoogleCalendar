@@ -65,13 +65,12 @@ namespace GoogleCalendarService
             using (var stream =
                 new FileStream(_credentialsPath, FileMode.Open, FileAccess.Read))
             {
-                string credPath = "token.json";
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                GoogleClientSecrets.Load(stream).Secrets,
+                GoogleClientSecrets.FromStream(stream).Secrets,
                 Scopes,
                 userRole.ToString(),
                 CancellationToken.None,
-                new FileDataStore(credPath, true)).Result;
+                new FileDataStore(FolderForToken, true)).Result;
             }
 
             return credential;
@@ -81,14 +80,14 @@ namespace GoogleCalendarService
         {
             BaseClientService.Initializer initializer = new BaseClientService.Initializer();
             initializer.HttpClientInitializer = credential;
-            initializer.ApplicationName = this.ApplicationName;
+            initializer.ApplicationName = ApplicationName;
             return new CalendarService(initializer);
         }
 
         public string InsertEvent(Event calendarEvent)
         {
             UserCredential credential = this.GetCredential(UserRole.Admin);
-            calendarEvent = this.GetService(credential).Events.Insert(calendarEvent, this.CalendarId).Execute();
+            calendarEvent = GetService(credential).Events.Insert(calendarEvent, this.CalendarId).Execute();
             return calendarEvent.HtmlLink;
         }
 
