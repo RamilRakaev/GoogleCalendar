@@ -65,7 +65,7 @@ namespace GoogleCalendarBusiness
 
         public string InsertEvent(Event calendarEvent)
         {
-            UserCredential credential = this.GetCredential(UserRole.Admin);
+            UserCredential credential = GetCredential(UserRole.Admin);
             calendarEvent = GetService(credential).Events.Insert(calendarEvent, _options.CalendarId).Execute();
             return calendarEvent.HtmlLink;
         }
@@ -143,9 +143,11 @@ namespace GoogleCalendarBusiness
 
         private CalendarService GetService(UserCredential credential)
         {
-            BaseClientService.Initializer initializer = new BaseClientService.Initializer();
-            initializer.HttpClientInitializer = credential;
-            initializer.ApplicationName = _options.ApplicationName;
+            BaseClientService.Initializer initializer = new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = _options.ApplicationName
+            };
             return new CalendarService(initializer);
         }
     }
