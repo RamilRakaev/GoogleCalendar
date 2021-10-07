@@ -30,18 +30,23 @@ namespace GoogleCalendarService
         /// <summary>
         /// Создать событие
         /// </summary>
-        /// <param name="summary">Заголовок события</param>
-        /// <param name="description">Описание</param>
-        /// <param name="start">Дата начала</param>
-        /// <param name="end">Дата завершения</param>
-        /// <param name="creatorName">Имя создателя</param>
+        /// <param name="summary">Заголовок события.</param>
+        /// <param name="description">Описание.</param>
+        /// <param name="start">Дата начала.</param>
+        /// <param name="end">Дата завершения.</param>
+        /// <param name="creatorName">Имя создателя.</param>
         /// <param name="creatorEmail">Почта создателя</param>
-        /// <param name="eventType"></param>
-        /// <param name="status"></param>
-        /// <param name="visibility"></param>
-        /// <param name="guestsCanInviteOthers">Гости могут приглашать других</param>
-        /// <param name="guestsCanModify">Гости могут изменять событие</param>
-        /// <param name="location">Место проведение мероприятия</param>
+        /// <param name="eventType">Тип мероприятия. Возможные значения: default, 
+        /// outOfOffice - вне офиса.</param>
+        /// <param name="status">Статус. Возможные значения: confirmed - подтверждено, 
+        /// tentative - предварительно подтверждено, cancelled - отменено </param>
+        /// <param name="visibility">Видимость. Возможные значения: default - видимость 
+        /// по умолчанию для событий в календаре, public - доступно для всех 
+        /// пользователей календаря, private - доступно участникам мероприятия, 
+        /// confidential - конфиденциально</param>
+        /// <param name="guestsCanInviteOthers">Гости могут приглашать других.</param>
+        /// <param name="guestsCanModify">Гости могут изменять событие.</param>
+        /// <param name="location">Место проведение мероприятия.</param>
         /// <returns></returns>
         public string CreateEvent(
             string summary,

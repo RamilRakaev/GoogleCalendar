@@ -9,19 +9,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GoogleCalendarWebApp.Pages
 {
-    public class ShowCalendarEventsModel : PageModel
+    public class CreateEventModel : PageModel
     {
         readonly private GoogleCalendar _googleCalendar;
 
-        public ShowCalendarEventsModel(GoogleCalendar googleCalendar)
+        public CreateEventModel(GoogleCalendar googleCalendar)
         {
             _googleCalendar = googleCalendar;
         }
 
         public void OnGet()
         {
-            Events = _googleCalendar.GetEvents();
         }
-        public Event[] Events { get; set; }
+
+        public void OnPost(Event newEvent)
+        {
+            _googleCalendar.InsertEvent(newEvent);
+        }
     }
 }

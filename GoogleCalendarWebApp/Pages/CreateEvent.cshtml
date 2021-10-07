@@ -1,0 +1,83 @@
+﻿@page
+@model GoogleCalendarWebApp.Pages.CreateEventModel
+@using Google.Apis.Calendar.v3.Data;
+@{
+
+    var newEvent = new Google.Apis.Calendar.v3.Data.Event();
+    newEvent.Start = new EventDateTime() { DateTime = DateTime.Now };
+    newEvent.End = new EventDateTime() { DateTime = DateTime.Now.AddDays(5) };
+    var creator = new Event.CreatorData();
+    newEvent.Creator = creator;
+}
+@newEvent.Start.Date
+<div class="justify-content-center">
+    <form class="w-50" method="post">
+        <div class="form-group">
+            <label>Заголовок</label>
+            <input class="form-control" type="text" asp-for="@newEvent.Summary" />
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <input class="form-control" type="text" asp-for="@newEvent.Description" />
+        </div>
+        <div class="form-group">
+            <label>Дата начала</label>
+            <input class="form-control" type="datetime" asp-for="@newEvent.Start.DateTime" />
+        </div>
+        <div class="form-group">
+            <label>Дата завершения</label>
+            <input class="form-control" type="datetime" asp-for="@newEvent.End.DateTime" />
+        </div>
+        <div class="form-group">
+            <label>Имя создателя</label>
+            <input class="form-control" type="text" asp-for="@creator.DisplayName" />
+        </div>
+        <div class="form-group">
+            <label>Почта создателя</label>
+            <input class="form-control" type="email" asp-for="@creator.Email" />
+        </div>
+        <div class="form-group">
+            <label>Тип мероприятия</label>
+            <select class="form-control" asp-for="@newEvent.EventType">
+                <option value="default">По умолчанию</option>
+                <option value="outOfOffice">Вне офиса</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Статус мероприятия</label>
+            <select class="form-control" asp-for="@newEvent.Status">
+                <option value="confirmed">Подтверждено</option>
+                <option value="tentative">Предварительно подтверждено</option>
+                <option value="cancelled">Отменено</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Видимость</label>
+            <select class="form-control" asp-for="@newEvent.Visibility">
+                <option value="default">Видимость по умолчанию для событий в календаре</option>
+                <option value="public">Доступно для всех пользователей календаря</option>
+                <option value="private">Доступно участникам мероприятия</option>
+                <option value="confidential">конфиденциально</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Гости могут приглашать других</label>
+            <select class="form-control" asp-for="@newEvent.GuestsCanInviteOthers">
+                <option value="true">Могут</option>
+                <option value="false">Не могут</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Гости могут изменять событие</label>
+            <select class="form-control" asp-for="@newEvent.GuestsCanModify">
+                <option value="true">Могут</option>
+                <option value="false">Не могут</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Место проведение мероприятия</label>
+            <input class="form-control" type="text" asp-for="@newEvent.Location" />
+        </div>
+        <button class="btn badge-dark">Добавить событие</button>
+    </form>
+</div>
