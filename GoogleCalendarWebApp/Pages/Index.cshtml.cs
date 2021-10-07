@@ -18,9 +18,10 @@ namespace GoogleCalendarWebApp.Pages
 
         public void OnGet()
         {
-            var result = _googleCalendar.ShowUpCommingEvent();
-            var rs = _googleCalendar.CreateEvent("1", "1", DateTime.Now, new DateTime(2022, 10, 10));
-            result = _googleCalendar.ShowUpCommingEvent();
+            var result = _googleCalendar.ShowUpCommingEvents();
+            //var rs = _googleCalendar.CreateEvent("1", "1", DateTime.Now, new DateTime(2022, 10, 10));
+            result = _googleCalendar.ShowUpCommingEvents();
+            var events = _googleCalendar.GetEvents();
         }
     }
 }

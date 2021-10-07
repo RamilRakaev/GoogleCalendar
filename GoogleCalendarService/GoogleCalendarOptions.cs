@@ -8,7 +8,7 @@
 
         public string CalendarId { get; set; }
 
-        public string CredentialsPath { get; set; }
+        public string CredentialsPath { get; set; } = string.Empty;
 
         public string FolderForToken { get; set; }
     }

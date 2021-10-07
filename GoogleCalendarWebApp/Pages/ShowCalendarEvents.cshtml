@@ -1,0 +1,28 @@
+﻿@page
+@model GoogleCalendarWebApp.Pages.ShowCalendarEventsModel
+@{
+}
+<div class="container mt-3">
+    <ol class="list-group">
+        @foreach (var calendarEvent in Model.Events)
+        {
+            <li class="m-3">
+                <p>Заголовок: @calendarEvent.Summary</p>
+                <p>Создатель: @calendarEvent.Creator.DisplayName почта: @calendarEvent.Creator.Email)</p>
+                <p>Описание: @calendarEvent.Description</p>
+                <p>Статус: @calendarEvent.Status</p>
+                <p>Тип события: @calendarEvent.EventType</p>
+                <p>Дата начала: @calendarEvent.Start.DateTime</p>
+                <p>Дата окончания: @calendarEvent.End</p>
+                <p>Место проведения мероприятия: @calendarEvent.Location</p>
+                <p>Участники:</p>
+                @if(calendarEvent.Attendees != null)foreach (var attendee in calendarEvent.Attendees)
+                {
+                    <p>Имя: @attendee.DisplayName</p>
+                    <p>Почта: @attendee.Email</p>
+                    <p>Комментарий: @attendee.Comment</p>
+                }
+            </li>
+        }
+    </ol>
+</div>
