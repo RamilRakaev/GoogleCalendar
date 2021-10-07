@@ -2,8 +2,6 @@
 {
     public class GoogleCalendarOptions
     {
-        public const string GoogleCalendar = "GoogleCalendarOptions";
-
         public string ApplicationName { get; set; }
 
         public string CalendarId { get; set; }
