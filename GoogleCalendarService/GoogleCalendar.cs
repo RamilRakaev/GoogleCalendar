@@ -18,7 +18,7 @@ namespace GoogleCalendarService
 
         static GoogleCalendar()
         {
-            string[] textArray1 = new string[] { (string)CalendarService.Scope.Calendar };
+            string[] textArray1 = new string[] { CalendarService.Scope.Calendar };
             Scopes = textArray1;
         }
 
@@ -31,6 +31,20 @@ namespace GoogleCalendarService
             FolderForToken = _options.FolderForToken;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="summary"></param>
+        /// <param name="description"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="eventType"></param>
+        /// <param name="status"></param>
+        /// <param name="visibility"></param>
+        /// <param name="guestsCanInviteOthers"></param>
+        /// <param name="guestsCanModify"></param>
+        /// <param name="location"></param>
+        /// <returns></returns>
         public string CreateEvent(
             string summary,
             string description,
@@ -47,7 +61,7 @@ namespace GoogleCalendarService
             {
                 Summary = summary,
                 Description = description,
-                Start = new EventDateTime() {DateTime = start },
+                Start = new EventDateTime() { DateTime = start },
                 End = new EventDateTime() { DateTime = end },
                 EventType = eventType,
                 Status = status,

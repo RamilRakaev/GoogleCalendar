@@ -1,7 +1,7 @@
 ﻿using GoogleCalendarService;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-
+using System;
 
 namespace GoogleCalendarWebApp.Pages
 {
@@ -18,7 +18,9 @@ namespace GoogleCalendarWebApp.Pages
 
         public void OnGet()
         {
-            _googleCalendar.ShowUpCommingEvent();
+            var result = _googleCalendar.ShowUpCommingEvent();
+            var rs = _googleCalendar.CreateEvent("1", "1", DateTime.Now, new DateTime(2022, 10, 10));
+            result = _googleCalendar.ShowUpCommingEvent();
         }
     }
 }
