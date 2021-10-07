@@ -26,7 +26,7 @@ namespace GoogleCalendarWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.Configure<GoogleCalendarOptions>(Configuration.GetSection("GoogleCalendarOptions"));
+            services.Configure<GoogleCalendarOptions>(Configuration.GetSection(GoogleCalendarOptions.GoogleCalendar));
             services.AddTransient<IGoogleCalendar, GoogleCalendar>();
         }
 
