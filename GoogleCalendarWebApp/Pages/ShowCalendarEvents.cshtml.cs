@@ -22,6 +22,7 @@ namespace GoogleCalendarWebApp.Pages
         {
             Events = _googleCalendar.GetEvents();
         }
+
         public Event[] Events { get; set; }
     }
 }
