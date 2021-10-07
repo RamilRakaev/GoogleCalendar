@@ -1,3 +1,4 @@
+using GoogleCalendarBusiness;
 using GoogleCalendarService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +27,7 @@ namespace GoogleCalendarWebApp
         {
             services.AddRazorPages();
             services.Configure<GoogleCalendarOptions>(Configuration.GetSection("GoogleCalendarOptions"));
-            services.AddTransient<GoogleCalendar, GoogleCalendar>();
+            services.AddTransient<IGoogleCalendar, GoogleCalendar>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,9 +11,9 @@ namespace GoogleCalendarWebApp.Pages
 {
     public class ShowCalendarEventsModel : PageModel
     {
-        readonly private GoogleCalendar _googleCalendar;
+        readonly private IGoogleCalendar _googleCalendar;
 
-        public ShowCalendarEventsModel(GoogleCalendar googleCalendar)
+        public ShowCalendarEventsModel(IGoogleCalendar googleCalendar)
         {
             _googleCalendar = googleCalendar;
         }

@@ -11,9 +11,9 @@ namespace GoogleCalendarWebApp.Pages
 {
     public class CreateEventModel : PageModel
     {
-        readonly private GoogleCalendar _googleCalendar;
+        readonly private IGoogleCalendar _googleCalendar;
 
-        public CreateEventModel(GoogleCalendar googleCalendar)
+        public CreateEventModel(IGoogleCalendar googleCalendar)
         {
             _googleCalendar = googleCalendar;
         }

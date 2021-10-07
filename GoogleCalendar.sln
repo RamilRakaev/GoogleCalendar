@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarService", "Go
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarWebApp", "GoogleCalendarWebApp\GoogleCalendarWebApp.csproj", "{0CA6164D-A948-4573-A186-91371B1B42BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalendarBusiness", "GoogleCalendarBusiness\GoogleCalendarBusiness.csproj", "{EB1E249F-D194-4354-8186-646904822B42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0CA6164D-A948-4573-A186-91371B1B42BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA6164D-A948-4573-A186-91371B1B42BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA6164D-A948-4573-A186-91371B1B42BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1E249F-D194-4354-8186-646904822B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1E249F-D194-4354-8186-646904822B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1E249F-D194-4354-8186-646904822B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1E249F-D194-4354-8186-646904822B42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,9 +8,9 @@ namespace GoogleCalendarWebApp.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly GoogleCalendar _googleCalendar;
+        private readonly IGoogleCalendar _googleCalendar;
 
-        public IndexModel(ILogger<IndexModel> logger, GoogleCalendar googleCalendar)
+        public IndexModel(ILogger<IndexModel> logger, IGoogleCalendar googleCalendar)
         {
             _logger = logger;
             _googleCalendar = googleCalendar;
