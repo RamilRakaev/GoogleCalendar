@@ -42,9 +42,13 @@ namespace GoogleCalendarWebApp.Pages
         {
             Event = JsonSerializer.Deserialize<Event>(TempData["newEvent"].ToString());
             if (Event.Attendees != null)
+            {
                 Event.Attendees.Add(attendee);
+            }
             else
+            {
                 Event.Attendees = new List<EventAttendee>() { attendee };
+            }
             TempData["newEvent"] = JsonSerializer.Serialize(Event);
         }
 
