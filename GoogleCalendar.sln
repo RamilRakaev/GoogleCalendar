@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarService", "Go
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarWebApp", "GoogleCalendarWebApp\GoogleCalendarWebApp.csproj", "{0CA6164D-A948-4573-A186-91371B1B42BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleCalendarBusiness", "GoogleCalendarBusiness\GoogleCalendarBusiness.csproj", "{EB1E249F-D194-4354-8186-646904822B42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCalendarBusiness", "GoogleCalendarBusiness\GoogleCalendarBusiness.csproj", "{EB1E249F-D194-4354-8186-646904822B42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

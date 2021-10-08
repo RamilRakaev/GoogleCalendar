@@ -1,0 +1,19 @@
+﻿@page
+@model GoogleCalendarWebApp.Pages.AddAttendeeModel
+@using Google.Apis.Calendar.v3.Data;
+@{
+    EventAttendee attendee = new EventAttendee();
+}
+<form method="post">
+    <input type="hidden" asp-for="@Model.Event" />
+    <div class="form-group">
+        <label>Имя участника</label>
+        <input type="text" asp-for="@attendee.DisplayName" />
+    </div>
+    <div class="form-group">
+        <label>Почта участника</label>
+        <input type="email" asp-for="@attendee.Email" />
+    </div>
+    <button class="btn btn-dark" asp-page-handler="InsertEvent">Создать событие</button>
+    <button class="btn btn-dark" asp-page-handler="AddAttendee">Добавить нового участника</button>
+</form>

@@ -6,6 +6,7 @@ using Google.Apis.Util.Store;
 using GoogleCalendarService;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -35,6 +36,7 @@ namespace GoogleCalendarBusiness
             DateTime end,
             string creatorName = null,
             string creatorEmail = null,
+            List<EventAttendee> attendees = null,
             string eventType = "default",
             string status = "confirmed",
             string visibility = "default",
@@ -48,17 +50,18 @@ namespace GoogleCalendarBusiness
                 Description = description,
                 Start = new EventDateTime() { DateTime = start },
                 End = new EventDateTime() { DateTime = end },
+                Creator = new Event.CreatorData()
+                {
+                    DisplayName = creatorName,
+                    Email = creatorEmail
+                },
+                Attendees = attendees,
                 EventType = eventType,
                 Status = status,
                 Visibility = visibility,
                 GuestsCanInviteOthers = guestsCanInviteOthers,
                 GuestsCanModify = guestsCanModify,
-                Location = location,
-                Creator = new Event.CreatorData()
-                {
-                    DisplayName = creatorName,
-                    Email = creatorEmail
-                }
+                Location = location
             };
             return InsertEvent(calendarEvent);
         }
@@ -119,7 +122,6 @@ namespace GoogleCalendarBusiness
             request.OrderBy = sortByModifiedDate ? EventsResource.ListRequest.OrderByEnum.Updated : EventsResource.ListRequest.OrderByEnum.StartTime;
             request.Q = q;
             Events events = request.Execute();
-
             return events.Items != null && events.Items.Count > 0 ? events.Items.ToArray() : new Event[0];
         }
 

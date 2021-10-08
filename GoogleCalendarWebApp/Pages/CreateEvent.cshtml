@@ -77,6 +77,7 @@
             <label>Место проведение мероприятия</label>
             <input class="form-control" type="text" asp-for="@newEvent.Location" />
         </div>
-        <button class="btn badge-dark">Добавить событие</button>
+        <button class="btn badge-light" asp-page-handler="AddAttendee">Добавить участников</button>
+        <button class="btn badge-danger" asp-page-handler="InsertEvent">Добавить событие</button>
     </form>
 </div>

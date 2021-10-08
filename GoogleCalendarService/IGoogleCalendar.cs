@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Calendar.v3.Data;
 using System;
+using System.Collections.Generic;
 
 namespace GoogleCalendarService
 {
@@ -16,6 +17,7 @@ namespace GoogleCalendarService
         /// <param name="end">Дата завершения.</param>
         /// <param name="creatorName">Имя создателя.</param>
         /// <param name="creatorEmail">Почта создателя</param>
+        /// <param name="attendees">Учатники проекта</param>
         /// <param name="eventType">Тип мероприятия. Возможные значения: default, 
         /// outOfOffice - вне офиса.</param>
         /// <param name="status">Статус. Возможные значения: confirmed - подтверждено, 
@@ -34,7 +36,8 @@ namespace GoogleCalendarService
             DateTime start,
             DateTime end,
             string creatorName = null,
-            string creatorEmail = null,
+            string creatorEmail = null, 
+            List<EventAttendee> attendees = null,
             string eventType = "default",
             string status = "confirmed",
             string visibility = "default",
