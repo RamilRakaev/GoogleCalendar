@@ -18,9 +18,9 @@ namespace GoogleCalendarWebApp.Pages
             _googleCalendar = googleCalendar;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            Events = _googleCalendar.GetEvents();
+            Events = await _googleCalendar.GetEvents();
         }
 
         public Event[] Events { get; set; }
