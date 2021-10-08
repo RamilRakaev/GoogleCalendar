@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace GoogleCalendarBusiness
 {
@@ -29,7 +30,7 @@ namespace GoogleCalendarBusiness
             _options = options.Value;
         }
 
-        public string CreateEvent(
+        public async Task<string> CreateEvent(
             string summary,
             string description,
             DateTime start,
@@ -63,23 +64,23 @@ namespace GoogleCalendarBusiness
                 GuestsCanModify = guestsCanModify,
                 Location = location
             };
-            return InsertEvent(calendarEvent);
+            return await InsertEvent(calendarEvent);
         }
 
-        public string InsertEvent(Event calendarEvent)
+        public async Task<string> InsertEvent(Event calendarEvent)
         {
-            UserCredential credential = GetCredential(UserRole.Admin);
+            UserCredential credential = await GetCredential(UserRole.Admin);
             calendarEvent = GetService(credential).Events.Insert(calendarEvent, _options.CalendarId).Execute();
             return calendarEvent.HtmlLink;
         }
 
-        public string ShowUpCommingEvents()
+        public async Task<string> ShowUpCommingEvents()
         {
             string output = "";
-            var events = GetEvents();
+            var events = await GetEvents();
             if (events.Length > 0)
             {
-                foreach (var eventItem in GetEvents())
+                foreach (var eventItem in events)
                 {
                     string when = eventItem.Start.DateTime.ToString();
                     if (string.IsNullOrEmpty(when))
@@ -96,7 +97,7 @@ namespace GoogleCalendarBusiness
             return output;
         }
 
-        public Event[] GetEvents(
+        public async Task<Event[]> GetEvents(
             DateTime? timeMin = null,
             DateTime? timeMax = null,
             int maxResults = 100,
@@ -106,7 +107,7 @@ namespace GoogleCalendarBusiness
             string q = null,
             bool sortByModifiedDate = false)
         {
-            UserCredential credential = GetCredential(UserRole.User);
+            UserCredential credential = await GetCredential(UserRole.User);
 
             // Creat Google Calendar API service.
             CalendarService service = GetService(credential);
@@ -125,7 +126,7 @@ namespace GoogleCalendarBusiness
             return events.Items != null && events.Items.Count > 0 ? events.Items.ToArray() : new Event[0];
         }
 
-        private UserCredential GetCredential(UserRole userRole)
+        private async Task<UserCredential> GetCredential(UserRole userRole)
         {
             UserCredential credential;
             if (File.Exists(_options.CredentialsPath) == false)
@@ -133,12 +134,12 @@ namespace GoogleCalendarBusiness
             using (var stream =
                 new FileStream(_options.CredentialsPath, FileMode.Open, FileAccess.Read))
             {
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                 GoogleClientSecrets.FromStream(stream).Secrets,
                 Scopes,
                 userRole.ToString(),
                 CancellationToken.None,
-                new FileDataStore(_options.FolderForToken, true)).Result;
+                new FileDataStore(_options.FolderForToken, true));
             }
             return credential;
         }

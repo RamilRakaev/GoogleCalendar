@@ -1,6 +1,7 @@
 ﻿using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GoogleCalendarService
 {
@@ -30,7 +31,7 @@ namespace GoogleCalendarService
         /// <param name="guestsCanModify">Гости могут изменять событие.</param>
         /// <param name="location">Место проведение мероприятия.</param>
         /// <returns></returns>
-        public string CreateEvent(
+        public Task<string> CreateEvent(
             string summary,
             string description,
             DateTime start,
@@ -45,7 +46,7 @@ namespace GoogleCalendarService
             bool guestsCanModify = false,
             string location = "default");
 
-        public string InsertEvent(Event calendarEvent);
+        public Task<string> InsertEvent(Event calendarEvent);
 
         /// <summary>
         /// Вернуть мероприятия
@@ -59,7 +60,7 @@ namespace GoogleCalendarService
         /// <param name="q">Произвольный текстовый поиск событий по заданной строке</param>
         /// <param name="sortByModifiedDate">Сортировать по дате обновления</param>
         /// <returns></returns>
-        public abstract Event[] GetEvents(
+        public Task<Event[]> GetEvents(
             DateTime? timeMin = null,
             DateTime? timeMax = null,
             int maxResults = 100,
@@ -69,6 +70,6 @@ namespace GoogleCalendarService
             string q = null,
             bool sortByModifiedDate = false);
 
-        public string ShowUpCommingEvents();
+        public Task<string> ShowUpCommingEvents();
     }
 }
